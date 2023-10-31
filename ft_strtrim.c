@@ -1,44 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dshatilo <dshatilo@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/26 19:33:34 by dshatilo          #+#    #+#             */
-/*   Updated: 2023/10/30 13:18:19 by dshatilo         ###   ########.fr       */
+/*   Created: 2023/10/30 13:44:02 by dshatilo          #+#    #+#             */
+/*   Updated: 2023/10/30 15:37:54 by dshatilo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_calloc(size_t count, size_t size)
+char	*ft_strtrim(char const *s1, char const *set)
 {
-	void	*mem;
-	size_t	i;
-	size_t	len;
+	size_t	start;
+	size_t	end;
+	char	*str;
 
-	len = count * size;
-	if (len / count != size)
+	if (!s1)
 		return (0);
-	mem = malloc(len);
-	if (!mem)
+	start = 0;
+	end = ft_strlen(s1);
+	while (*(s1 + start) != 0 && ft_strchr(set, *(s1 + start)))
+		start++;
+	while (end > 0 && ft_strchr(set, *(s1 + end)))
+		end--;
+	end++;
+	if (end < start)
+		end = start;
+	str = (char *)malloc(sizeof(char) * (end - start + 1));
+	if (!str)
 		return (0);
-	i = 0;
-	while (i < count * size)
-		*((char *)mem + i++) = 0;
-	return (mem);
+	ft_strlcpy(str, s1 + start, end - start + 1);
+	return (str);
 }
-
-// #include <limits.h>
-// #include <stdio.h>
-
-// int	main(void)
-// {
-// 	int	*test;
-
-// 	test = ft_calloc(SIZE_T_MAX, 0);
-// 	printf("ft:%p\n", test);
-
-// 	return (0);
-// }

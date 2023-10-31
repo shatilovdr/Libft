@@ -1,44 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dshatilo <dshatilo@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/26 19:33:34 by dshatilo          #+#    #+#             */
-/*   Updated: 2023/10/30 13:18:19 by dshatilo         ###   ########.fr       */
+/*   Created: 2023/10/31 16:14:54 by dshatilo          #+#    #+#             */
+/*   Updated: 2023/10/31 16:20:30 by dshatilo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_calloc(size_t count, size_t size)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	void	*mem;
+	char	*res;
 	size_t	i;
-	size_t	len;
 
-	len = count * size;
-	if (len / count != size)
-		return (0);
-	mem = malloc(len);
-	if (!mem)
+	i = ft_strlen(s);
+	res = (char *)malloc(sizeof(char) * (i + 1));
+	if (!res)
 		return (0);
 	i = 0;
-	while (i < count * size)
-		*((char *)mem + i++) = 0;
-	return (mem);
+	while (*(s + i) != 0)
+	{
+		*(res + i) = f(i, *(s + i));
+		i++;
+	}
+	*(res + i) = 0;
+	return (res);
 }
-
-// #include <limits.h>
-// #include <stdio.h>
-
-// int	main(void)
-// {
-// 	int	*test;
-
-// 	test = ft_calloc(SIZE_T_MAX, 0);
-// 	printf("ft:%p\n", test);
-
-// 	return (0);
-// }

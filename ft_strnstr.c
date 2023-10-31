@@ -6,7 +6,7 @@
 /*   By: dshatilo <dshatilo@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 18:44:59 by dshatilo          #+#    #+#             */
-/*   Updated: 2023/10/26 19:05:49 by dshatilo         ###   ########.fr       */
+/*   Updated: 2023/10/31 19:03:29 by dshatilo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,14 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 		}
 		i++;
 	}
+	return (0);
+}
+
+int	main(void)
+{
+	char	haystack[] = "";
+	char	needle[] = "asfasdfasd";
+
+	printf("!%s!\n", ft_strnstr("lorem ipsum dolor sit amet", "dolor", 15));
 	return (0);
 }
