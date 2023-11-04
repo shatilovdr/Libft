@@ -6,7 +6,7 @@
 /*   By: dshatilo <dshatilo@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 13:44:02 by dshatilo          #+#    #+#             */
-/*   Updated: 2023/10/30 15:37:54 by dshatilo         ###   ########.fr       */
+/*   Updated: 2023/11/03 18:32:36 by dshatilo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 		return (0);
 	start = 0;
 	end = ft_strlen(s1);
+	if (!end)
+		return (ft_strdup(""));
 	while (*(s1 + start) != 0 && ft_strchr(set, *(s1 + start)))
 		start++;
 	while (end > 0 && ft_strchr(set, *(s1 + end)))

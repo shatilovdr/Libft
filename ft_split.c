@@ -6,17 +6,19 @@
 /*   By: dshatilo <dshatilo@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 15:38:51 by dshatilo          #+#    #+#             */
-/*   Updated: 2023/10/30 17:21:54 by dshatilo         ###   ########.fr       */
+/*   Updated: 2023/11/04 14:13:41 by dshatilo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t			count_words(char *str, char c);
+static size_t	count_words(char *str, char c);
+
+static int		ft_fill_arr(char const *s, char c, char **result);
 
 static char		*ft_strncpy(char	*dest, char	*src, size_t n);
 
-static void		ft_split2(char const *s, char c, char **result);
+static int		ft_split_free(char **result, size_t pos);
 
 char	**ft_split(char const *s, char c)
 {
@@ -27,11 +29,12 @@ char	**ft_split(char const *s, char c)
 	result = (char **)malloc(sizeof(char *) * (count_words((char *)s, c) + 1));
 	if (!result)
 		return (0);
-	ft_split2(s, c, result);
+	if (!ft_fill_arr(s, c, result))
+		result = 0;
 	return (result);
 }
 
-static void	ft_split2(char const *s, char c, char **result)
+static int	ft_fill_arr(char const *s, char c, char **result)
 {
 	size_t	pos;
 	size_t	i;
@@ -47,6 +50,8 @@ static void	ft_split2(char const *s, char c, char **result)
 			while (*(s + i + l) != 0 && *(s + i + l) != c)
 				l++;
 			*(result + pos) = (char *)malloc(sizeof(char) * (l + 1));
+			if (!(*(result + pos)))
+				return (ft_split_free(result, pos));
 			*(result + pos) = ft_strncpy(*(result + pos), (char *)s + i, l);
 			i += (l - 1);
 			pos++;
@@ -54,9 +59,10 @@ static void	ft_split2(char const *s, char c, char **result)
 		i++;
 	}
 	*(result + pos) = 0;
+	return (1);
 }
 
-size_t	count_words(char *str, char c)
+static size_t	count_words(char *str, char c)
 {
 	size_t	count;
 	size_t	i;
@@ -85,4 +91,18 @@ static char	*ft_strncpy(char	*dest, char	*src, size_t n)
 	}
 	*(dest + i) = 0;
 	return (dest);
+}
+
+static int	ft_split_free(char **result, size_t pos)
+{
+	size_t	i;
+
+	i = 0;
+	while (pos && i < pos)
+	{
+		free(result[i]);
+		i++;
+	}
+	free(result);
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: dshatilo <dshatilo@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 13:40:29 by dshatilo          #+#    #+#             */
-/*   Updated: 2023/10/24 16:43:33 by dshatilo         ###   ########.fr       */
+/*   Updated: 2023/11/04 11:33:54 by dshatilo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_isascii(int ch)
 {
-	if (ch >= 000 && ch <= 0177)
+	if (ch >= 0 && ch <= 127)
 		return (1);
 	return (0);
 }

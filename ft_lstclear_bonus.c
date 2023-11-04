@@ -1,30 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstsize.c                                       :+:      :+:    :+:   */
+/*   ft_lstclear_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dshatilo <dshatilo@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/01 11:57:46 by dshatilo          #+#    #+#             */
-/*   Updated: 2023/11/01 15:04:16 by dshatilo         ###   ########.fr       */
+/*   Created: 2023/11/01 15:05:09 by dshatilo          #+#    #+#             */
+/*   Updated: 2023/11/04 14:37:30 by dshatilo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_lstsize(t_list *lst)
+void	ft_lstclear(t_list **lst, void (*del)(void*))
 {
-	size_t	len;
-	t_list	*curr;
+	t_list	*following;
 
-	if (!lst)
-		return (0);
-	curr = lst;
-	len = 1;
-	while (curr->next)
+	if (!lst || !del)
+		return ;
+	while (*lst)
 	{
-		len++;
-		curr = curr->next;
+		following = (*lst)->next;
+		ft_lstdelone(*lst, del);
+		*lst = following;
 	}
-	return (len);
+	ft_lstdelone(*lst, del);
+	*lst = 0;
 }

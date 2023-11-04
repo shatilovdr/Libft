@@ -6,7 +6,7 @@
 /*   By: dshatilo <dshatilo@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 13:40:29 by dshatilo          #+#    #+#             */
-/*   Updated: 2023/10/24 16:43:54 by dshatilo         ###   ########.fr       */
+/*   Updated: 2023/11/04 11:34:38 by dshatilo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_isprint(int ch)
 {
-	if (ch >= 040 && ch <= 0176)
+	if (ch >= 32 && ch <= 126)
 		return (ch);
 	return (0);
 }

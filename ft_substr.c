@@ -6,7 +6,7 @@
 /*   By: dshatilo <dshatilo@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 17:44:11 by dshatilo          #+#    #+#             */
-/*   Updated: 2023/10/30 12:41:07 by dshatilo         ###   ########.fr       */
+/*   Updated: 2023/11/03 18:07:31 by dshatilo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,13 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		return (0);
 	s_len = ft_strlen(s);
 	if (start > s_len)
-		len = 0;
+		return (ft_strdup(""));
 	s_len -= start;
 	substr = (char *)malloc(sizeof(char)
 			* ((s_len) * (s_len < len) + (len) * (s_len >= len) + 1));
 	if (!substr)
 		return (0);
-	ft_strlcpy(substr, s + start, len + 1);
+	ft_strlcpy(substr, s + start, ((s_len) * (s_len < len) + (len)
+			* (s_len >= len) + 1));
 	return (substr);
 }

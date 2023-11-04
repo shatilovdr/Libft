@@ -6,7 +6,7 @@
 /*   By: dshatilo <dshatilo@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 18:44:59 by dshatilo          #+#    #+#             */
-/*   Updated: 2023/11/01 17:04:29 by dshatilo         ###   ########.fr       */
+/*   Updated: 2023/11/02 15:19:44 by dshatilo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,16 +25,12 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 		j = 0;
 		if (*(haystack + i) == *needle)
 		{
-			while ((*(haystack + i) == *(needle + j)) && *(needle + j) != 0)
-			{
-				i++;
+			while ((*(haystack + i + j) == *(needle + j)) && *(needle + j) != 0)
 				j++;
-			}
-			if (i > len)
+			if (i + j > len)
 				return (0);
 			if (*(needle + j) == 0)
-				return ((char *)haystack + i - j);
-			i--;
+				return ((char *)haystack + i);
 		}
 		i++;
 	}

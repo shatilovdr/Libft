@@ -1,27 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*   ft_lstmap_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dshatilo <dshatilo@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/26 12:06:12 by dshatilo          #+#    #+#             */
-/*   Updated: 2023/11/04 12:00:41 by dshatilo         ###   ########.fr       */
+/*   Created: 2023/11/01 18:31:00 by dshatilo          #+#    #+#             */
+/*   Updated: 2023/11/04 14:26:27 by dshatilo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memchr(const void *s, int c, size_t n)
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	size_t	i;
-
-	i = 0;
-	while (n > i)
-	{
-		if (*((unsigned char *)s + i) == (unsigned char) c)
-			return ((void *)s + i);
-		i++;
-	}
+	lst = 0;
+	f(0);
+	del (0);
 	return (0);
 }

@@ -6,26 +6,25 @@
 /*   By: dshatilo <dshatilo@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 19:33:34 by dshatilo          #+#    #+#             */
-/*   Updated: 2023/11/01 16:35:47 by dshatilo         ###   ########.fr       */
+/*   Updated: 2023/11/04 14:02:02 by dshatilo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <sys/wait.h>
 
 void	*ft_calloc(size_t count, size_t size)
 {
 	void	*mem;
-	size_t	i;
-	size_t	len;
+	size_t	num;
 
-	len = count * size;
-	if (len / count != size)
+	num = 0;
+	if (count != 0 && ((num - 1) / count) < size)
 		return (0);
-	mem = malloc(len);
+	num = count * size;
+	mem = malloc(num);
 	if (!mem)
 		return (0);
-	i = 0;
-	while (i < count * size)
-		*((char *)mem + i++) = 0;
+	ft_memset(mem, 0, num);
 	return (mem);
 }
