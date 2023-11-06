@@ -6,7 +6,7 @@
 /*   By: dshatilo <dshatilo@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 11:57:46 by dshatilo          #+#    #+#             */
-/*   Updated: 2023/11/04 14:21:23 by dshatilo         ###   ########.fr       */
+/*   Updated: 2023/11/06 12:31:44 by dshatilo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 t_list	*ft_lstnew(void *content)
 {
-	t_list	*res;
+	t_list	*n_node;
 
-	res = (t_list *)malloc(sizeof(t_list));
-	if (!res)
+	n_node = (t_list *)malloc(sizeof(t_list));
+	if (!n_node)
 		return (0);
-	res->content = content;
-	res->next = 0;
-	return (res);
+	n_node->content = content;
+	n_node->next = 0;
+	return (n_node);
 }

@@ -6,7 +6,7 @@
 /*   By: dshatilo <dshatilo@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 15:05:09 by dshatilo          #+#    #+#             */
-/*   Updated: 2023/11/04 14:37:30 by dshatilo         ###   ########.fr       */
+/*   Updated: 2023/11/06 12:43:02 by dshatilo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,5 @@ void	ft_lstclear(t_list **lst, void (*del)(void*))
 		ft_lstdelone(*lst, del);
 		*lst = following;
 	}
-	ft_lstdelone(*lst, del);
 	*lst = 0;
 }

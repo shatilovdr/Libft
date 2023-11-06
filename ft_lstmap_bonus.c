@@ -6,7 +6,7 @@
 /*   By: dshatilo <dshatilo@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 18:31:00 by dshatilo          #+#    #+#             */
-/*   Updated: 2023/11/04 14:26:27 by dshatilo         ###   ########.fr       */
+/*   Updated: 2023/11/06 12:35:26 by dshatilo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,27 @@
 
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	lst = 0;
-	f(0);
-	del (0);
-	return (0);
+	t_list	*new;
+	t_list	*first;
+
+	if (!lst || !f || !del)
+		return (0);
+	new = ft_lstnew(f(lst->content));
+	if (!new)
+		return (0);
+	first = new;
+	lst = lst->next;
+	while (lst)
+	{
+		new->next = ft_lstnew(f(lst->content));
+		if (!(new->next))
+		{
+			ft_lstclear(&first, del);
+			return (0);
+		}
+		new = new->next;
+		lst = lst->next;
+	}
+	new->next = 0;
+	return (first);
 }

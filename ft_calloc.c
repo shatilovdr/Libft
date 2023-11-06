@@ -6,12 +6,11 @@
 /*   By: dshatilo <dshatilo@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 19:33:34 by dshatilo          #+#    #+#             */
-/*   Updated: 2023/11/04 14:02:02 by dshatilo         ###   ########.fr       */
+/*   Updated: 2023/11/06 11:25:32 by dshatilo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <sys/wait.h>
 
 void	*ft_calloc(size_t count, size_t size)
 {
