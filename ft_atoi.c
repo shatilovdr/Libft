@@ -6,7 +6,7 @@
 /*   By: dshatilo <dshatilo@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 19:10:02 by dshatilo          #+#    #+#             */
-/*   Updated: 2023/11/01 17:39:44 by dshatilo         ###   ########.fr       */
+/*   Updated: 2023/11/28 10:12:20 by dshatilo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,6 @@ int	ft_atoi(const char *str)
 	while (*str >= 48 && *str <= 57)
 	{
 		result = result * 10 + sign * (*str - 48);
-		if (result / sign < 0)
-			return ((sign > 0) * -1);
 		str++;
 	}
 	return (result);

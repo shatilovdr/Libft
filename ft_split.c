@@ -6,7 +6,7 @@
 /*   By: dshatilo <dshatilo@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 15:38:51 by dshatilo          #+#    #+#             */
-/*   Updated: 2023/11/04 14:13:41 by dshatilo         ###   ########.fr       */
+/*   Updated: 2023/11/08 09:34:18 by dshatilo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static size_t	count_words(char *str, char c);
 
 static int		ft_fill_arr(char const *s, char c, char **result);
 
-static char		*ft_strncpy(char	*dest, char	*src, size_t n);
+static char		*ft_strncpy(char *dest, char *src, size_t n);
 
 static int		ft_split_free(char **result, size_t pos);
 
@@ -79,7 +79,7 @@ static size_t	count_words(char *str, char c)
 	return (count);
 }
 
-static char	*ft_strncpy(char	*dest, char	*src, size_t n)
+static char	*ft_strncpy(char *dest, char *src, size_t n)
 {
 	size_t	i;
 
